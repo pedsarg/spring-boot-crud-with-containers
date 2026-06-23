@@ -1,0 +1,91 @@
+<div class="witcher-background">
+
+  <div class="login-container">
+
+    <!--
+    <div class="wolf-logo">
+      <img src="assets/images/wolf-school.png" alt="School of the Wolf">
+    </div>
+    -->
+
+    <h1>Kaer Morhen</h1>
+    <h2>Enter the Keep</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="username">Username</label>
+
+        <input
+          id="username"
+          type="text"
+          formControlName="username"
+          autocomplete="username"
+          placeholder="Enter your username">
+
+        <small
+          *ngIf="username?.invalid && username?.touched"
+          class="error-message">
+
+          Username is required.
+
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password">
+
+        <small
+          *ngIf="password?.invalid && password?.touched"
+          class="error-message">
+
+          Password must be at least 6 characters long.
+
+        </small>
+      </div>
+
+      <div
+        *ngIf="errorMessage"
+        class="server-error-message">
+
+        {{ errorMessage }}
+
+      </div>
+
+      <button
+        class="login-button"
+        type="submit"
+        [disabled]="loginForm.invalid || loading">
+
+        {{ loading ? 'Entering Kaer Morhen...' : 'Begin the Hunt' }}
+
+      </button>
+
+      <div class="register-link">
+
+        <span>
+          Not yet a member of the Wolf School?
+        </span>
+
+        <button
+          type="button"
+          routerLink="/register"
+          class="register-button">
+
+          Join the Order
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

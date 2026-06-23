@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.witcher-background {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 60px 20px;
+  overflow-y: auto;
+
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.78),
+      rgba(0, 0, 0, 0.88)
+    ),
+    url("https://images.unsplash.com/photo-1518709268805-4e9042af2176");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: fixed; 
+  inset: 0;        
+  overflow-y: auto; 
+}
+
+.register-container {
+  width: 500px;
+  padding: 40px;
+  max-width: 100%;
+  background: rgba(15, 15, 15, 0.94);
+
+  border: 2px solid #5b5b5b;
+  border-radius: 12px;
+
+  position: relative;
+
+  box-shadow:
+    0 0 30px rgba(0, 0, 0, 0.8),
+    0 0 15px rgba(150, 0, 0, 0.3);
+}
+
+.register-container::before {
+  content: "";
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(180, 180, 180, 0.25);
+  pointer-events: none;
+}
+
+.wolf-logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.wolf-logo img {
+  width: 100px;
+  filter:
+    brightness(1.1)
+    drop-shadow(0 0 10px rgba(255, 0, 0, 0.4));
+}
+
+h1 {
+  text-align: center;
+  color: #d1d1d1;
+  letter-spacing: 4px;
+  margin: 0 0 5px 0;
+}
+
+h2 {
+  text-align: center;
+  color: #8f8f8f;
+  letter-spacing: 3px;
+  font-size: 15px;
+  font-weight: 400;
+  margin: 0 0 30px 0; 
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+
+  color: #c7c7c7;
+  letter-spacing: 2px;
+  font-size: 13px;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+
+  background: #1c1c1c;
+  color: #e4e4e4;
+
+  border: 1px solid #505050;
+  border-radius: 6px;
+
+  outline: none;
+  transition: 0.3s;
+}
+
+input::placeholder {
+  color: #6d6d6d;
+}
+
+input:focus {
+  border-color: #b71c1c;
+  box-shadow:
+    0 0 12px rgba(183, 28, 28, 0.5);
+}
+
+.register-button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #7c0f0f,
+      #4d0707
+    );
+
+  border: 1px solid #9c2c2c;
+  color: white;
+
+  font-family: 'Cinzel', serif;
+  font-size: 15px;
+  letter-spacing: 2px;
+
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 20px rgba(183, 28, 28, 0.6);
+}
+
+.register-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.login-link {
+  margin-top: 25px;
+  text-align: center;
+  color: #8f8f8f;
+}
+
+.login-link span {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.back-button {
+  background: transparent;
+  border: 1px solid #5f5f5f;
+
+  color: #c8c8c8;
+
+  padding: 10px 20px;
+  cursor: pointer;
+
+  font-family: 'Cinzel', serif;
+  transition: 0.3s;
+}
+
+.back-button:hover {
+  border-color: #b71c1c;
+  color: white;
+
+  box-shadow:
+    0 0 10px rgba(183, 28, 28, 0.5);
+}
+
+.error-message {
+  display: block;
+  margin-top: 8px;
+  color: #c0392b;
+  font-size: 12px;
+}
