@@ -6,13 +6,13 @@ public class ExceptionResponse {
 
     private LocalDateTime timestamp;
     private int status;
-    private String error;
+    private String message;
     private String path;
     
     public ExceptionResponse(LocalDateTime timestamp, int status, String error, String path) {
         this.timestamp = timestamp;
         this.status = status;
-        this.error = error;
+        this.message = error;
         this.path = path;
     }
 
@@ -32,12 +32,12 @@ public class ExceptionResponse {
         this.status = status;
     }
 
-    public String getError() {
-        return error;
+    public String getMessage() {
+        return message;
     }
 
-    public void setError(String error) {
-        this.error = error;
+    public void setMessage(String error) {
+        this.message = error;
     }
 
     public String getPath() {

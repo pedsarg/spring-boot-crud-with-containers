@@ -194,3 +194,28 @@ input:focus {
   color: #c0392b;
   font-size: 12px;
 }
+
+.backend-error {
+  background-color: rgba(180, 0, 0, 0.2);
+  border: 1px solid #ff4d4d;
+  color: #ffb3b3;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  text-align: center;
+  font-size: 14px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+
+  -webkit-box-shadow: 0 0 0 1000px #1c1c1c inset !important;
+
+  -webkit-text-fill-color: #e4e4e4 !important;
+
+  border: 1px solid #505050 !important;
+
+  transition: background-color 9999s ease-in-out 0s;
+}

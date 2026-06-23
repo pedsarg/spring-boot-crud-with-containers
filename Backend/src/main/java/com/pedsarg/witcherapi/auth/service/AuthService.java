@@ -1,5 +1,8 @@
 package com.pedsarg.witcherapi.auth.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -37,11 +40,21 @@ public class AuthService {
 
     public RegisterResponseDTO register(RegisterRequestDTO registerUserDTO){
 
-        if(repository.existsByUsername(registerUserDTO.getUsername()))
-            throw new UserAlreadyExistsException("Username already exists!");
+        List<String> errors = new ArrayList<>();
 
-        if(repository.existsByEmail(registerUserDTO.getEmail()))
-            throw new UserAlreadyExistsException("Email already exists!");
+        if(repository.existsByUsername(registerUserDTO.getUsername())) {
+            errors.add("Username already exists!");
+        }
+
+        if(repository.existsByEmail(registerUserDTO.getEmail())) {
+            errors.add("Email already exists!");
+        }
+
+        if(!errors.isEmpty()) {
+            throw new UserAlreadyExistsException(
+                String.join(" ", errors)
+            );
+        }
 
         User newUser = AuthMapper.toEntity(registerUserDTO);
 

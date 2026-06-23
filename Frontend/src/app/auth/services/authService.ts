@@ -7,6 +7,13 @@ export interface LoginDTO {
   password: string;
 }
 
+export interface RegisterDTO {
+  username: string;
+  fullname: string;
+  email: string;
+  password: string;
+}
+
 export interface WitcherResponseDTO {
   message: string;
   token: string;
@@ -20,14 +27,22 @@ export class AuthService {
 
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://localhost:8080/auth/login';
+  private loginUrl = 'http://localhost:8080/auth/login';
+  private registerUrl = 'http://localhost:8080/auth/register';
 
   login(data: LoginDTO): Observable<WitcherResponseDTO> {
 
     return this.http.post<WitcherResponseDTO>(
-      this.apiUrl,
+      this.loginUrl,
+      data
+    );
+  }
+
+  register(data: RegisterDTO): Observable<WitcherResponseDTO> {
+
+    return this.http.post<WitcherResponseDTO>(
+      this.registerUrl,
       data
     );
   }
 }
-

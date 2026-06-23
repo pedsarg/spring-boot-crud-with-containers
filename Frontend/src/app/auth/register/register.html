@@ -71,6 +71,10 @@
         </small>
       </div>
 
+      <div *ngIf="errorMessage" class="backend-error">
+        {{ errorMessage }}
+      </div>
+
       <button
         class="register-button"
         type="submit"

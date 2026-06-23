@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 
 import { AuthService } from '../services/authService.js';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -52,50 +53,55 @@ export class LoginComponent {
     this.errorMessage = '';
 
     if (this.loginForm.invalid) {
+
       this.loginForm.markAllAsTouched();
+
       return;
     }
 
     this.loading = true;
 
-    this.authService.login(this.loginForm.value).subscribe({
+    this.authService.login(this.loginForm.value)
 
-      next: (response) => {
+      .pipe(
+        finalize(() => {
+          this.loading = false;
+        })
+      )
 
-        if (response.token) {
-          localStorage.setItem('token', response.token);
+      .subscribe({
+
+        next: (response) => {
+
+          if (response.token) {
+
+            localStorage.setItem('token', response.token);
+          }
+
+          this.router.navigate(['/home']);
+        },
+
+        error: (err) => {
+
+          console.error('Erro no login:', err);
+
+          if (err.status === 401) {
+
+            this.errorMessage =
+              err.error?.message?.trim() ||
+              'Invalid username or password';
+
+          } else if (err.status === 0) {
+
+            this.errorMessage = 'Unable to connect to server';
+
+          } else {
+
+            this.errorMessage = 'Unexpected error';
+          }
+
+          this.cdr.markForCheck();
         }
-
-        this.router.navigate(['/home']);
-      },
-
-      error: (error) => {
-
-        if (error.error?.error) {
-
-          this.errorMessage = error.error.error;
-
-        } else if (error.status === 401) {
-
-          this.errorMessage = 'Invalid username or password';
-
-        } else if (error.status === 0) {
-
-          this.errorMessage = 'Unable to connect to server';
-
-        } else {
-
-          this.errorMessage = 'Unexpected error';
-
-        }
-
-        this.loading = false;
-        this.cdr.detectChanges();
-      },
-
-      complete: () => {
-        this.loading = false;
-      }
-    });
+      });
   }
 }

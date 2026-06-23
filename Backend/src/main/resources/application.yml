@@ -5,7 +5,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://${DATABASE_CONTAINER:mysqlsrv}:${DATABASE_PORT:3306}/witcher_db?useTimezone=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
-    username: ${MYSQL_USER:witcher_application}
+    username: ${MYSQL_USER:witcher_app}
     password: ${MYSQL_PASSWORD:W1tcher@Db!2026}
 
   jpa:
